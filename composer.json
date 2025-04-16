@@ -1,5 +1,5 @@
 {
-    "name": "laminas/laminas-http",
+    "name": "angus/laminas-http",
     "description": "Provides an easy interface for performing Hyper-Text Transfer Protocol (HTTP) requests",
     "license": "BSD-3-Clause",
     "keywords": [
