@@ -67,7 +67,7 @@ class ContentType implements HeaderInterface
                 if (! preg_match('/^(?P<key>[^\s\=]+)\="?(?P<value>[^\s\"]*)"?$/', $parameter, $matches)) {
                     continue;
                 }
-                $parameters[$matches['key']] = $matches['value'];
+                $parameters[$matches['key']] = ($matches['key'] == 'boundary' ? '"' . $matches['value'] . '"' : $matches['value']);
             }
             $header->setParameters($parameters);
         }
