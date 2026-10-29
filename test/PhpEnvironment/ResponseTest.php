@@ -103,6 +103,8 @@ class ResponseTest extends TestCase
     {
         $response = new Response();
         $this->assertInstanceOf(Response::class, $response->sendHeaders());
+        $this->assertTrue($response->headersSent);
+        $this->assertTrue((new \ReflectionProperty($response, 'headersSent'))->isPublic());
     }
 
     public function testSendHeadersInvokesHeadersSentHandlerIfHeadersAreAlreadySent()

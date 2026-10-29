@@ -881,4 +881,12 @@ class SetCookieTest extends TestCase
             ],
         ];
     }
+
+    public function testHistoricalTypeIsDeclaredWithoutChangingCookieValue(): void
+    {
+        $cookie = new SetCookie('synthetic', 'value');
+        self::assertSame('Cookie', $cookie->type);
+        self::assertSame('synthetic=value', $cookie->getFieldValue());
+        self::assertTrue((new \ReflectionProperty(SetCookie::class, 'type'))->isPublic());
+    }
 }

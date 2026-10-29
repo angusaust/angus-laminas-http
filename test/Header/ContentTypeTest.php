@@ -170,4 +170,11 @@ class ContentTypeTest extends TestCase
         $this->expectException(InvalidArgumentException::class);
         new ContentType("foo/bar\r\n\r\nevilContent");
     }
+
+    public function testAngusMultipartBoundaryQuotingRemainsUnchanged(): void
+    {
+        $header = ContentType::fromString('Content-Type: multipart/form-data; boundary=ASAPP82_SYNTHETIC');
+        self::assertSame('"ASAPP82_SYNTHETIC"', $header->getParameters()['boundary']);
+        self::assertSame('multipart/form-data; boundary="ASAPP82_SYNTHETIC"', $header->getFieldValue());
+    }
 }

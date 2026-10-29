@@ -29,6 +29,9 @@ class Response extends HttpResponse
     /** @var null|callable */
     private $headersSentHandler;
 
+    /** @var bool|null */
+    public $headersSent;
+
     /**
      * Return the HTTP version for this response
      *
